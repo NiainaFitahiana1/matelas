@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Transformer bloc </title>
+</head>
+<body>
+    <h1>Transformer bloc</h1>
+
+    <form th:action="@{/transformerBloc}"  method="post">
+        <div>
+            <label for="date">Date :</label>
+            <input type="datetime-local" id="date" name="date" required />
+        </div>
+
+        <div>
+            <label for="bloc">Bloc disponible:</label>
+            <select id="bloc" name="blocId">
+                <option value="" disabled selected>-- Choisissez un bloc --</option>
+                <option th:each="bloc : ${blocs}" th:value="${bloc.id}" th:text="${bloc.nom}"></option>
+            </select>
+        </div>
+
+        <div th:each="forme_usuel : ${forme_usuels}">
+            <label for="forme_usuel1">Forme usuel :</label>
+            <select id="forme_usuel1" name="forme_usuel_id[]">
+                <option value="" disabled selected>-- Choisissez un forme usuel --</option>
+                <option th:each="forme_usuel : ${forme_usuels}" th:value="${forme_usuel.id}" th:text="${forme_usuel.nom}"></option>
+            </select>
+          <input type="number"  id="quantite1" name="quantite[]" placeholder="Quantite"  />
+        </div>
+
+        <div>
+            <label for="largeur">Largeur restante :</label>
+            <input type="text"  id="largeur" name="largeur" placeholder="Largeur" required />
+        </div>
+
+        <div>
+            <label for="longueur">Longueur restante :</label>
+            <input type="text"  id="longueur" name="longueur" placeholder="Longueur" required />
+        </div>
+
+        <div>
+            <label for="hauteur">Hauteur restante :</label>
+            <input type="text"  id="hauteur" name="hauteur" placeholder="Hauteur" required />
+        </div>
+
+        <button type="submit">Transfomer </button>
+    </form>
+
+    <p style="color:green;" th:text="${success}"></p>
+    <p style="color:red;" th:text="${erreur}"></p>
+
+</body>
+</html>

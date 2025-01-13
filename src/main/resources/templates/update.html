@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Transformer bloc </title>
+</head>
+<body>
+    <h1>Update bloc</h1>
+
+    <form th:action="@{/saveUpdate}"  method="post">
+      
+
+        <div>
+            <label for="bloc">Bloc :</label>
+            <select id="bloc" name="blocId">
+                <option value="" disabled selected>-- Choisissez un bloc --</option>
+                <option th:each="bloc : ${blocs}" th:value="${bloc.id}" th:text="${bloc.nom}"></option>
+            </select>
+        </div>
+
+      
+
+        <div>
+            <label for="hauteur">Prix revient :</label>
+            <input type="text"  id="hauteur" name="prixRevient" placeholder="Hauteur" required />
+        </div>
+
+        <button type="submit">update </button>
+    </form>
+
+  
+
+</body>
+</html>

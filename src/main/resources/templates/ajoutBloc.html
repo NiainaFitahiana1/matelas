@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ajouter un Bloc</title>
+</head>
+<body>
+    <h1>Ajout d'un bloc</h1>
+
+    <form th:action="@{/ajouterbloc}" th:object="${bloc}" method="post">
+        <div>
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" th:field="*{nom}" placeholder="Nom du bloc"  />
+            <div th:if="${#fields.hasErrors('nom')}" style="color:red;">
+                <span th:each="err : ${#fields.errors('nom')}" th:text="${err}"></span>
+            </div>
+        </div>
+
+        <div>
+            <label for="prixRevient">Prix de revient :</label>
+            <input type="number" step="0.01" id="prixRevient" th:field="*{prixRevient}" placeholder="Prix de revient" required />
+            <div th:if="${#fields.hasErrors('prixRevient')}" style="color:red;">
+                <span th:each="err : ${#fields.errors('prixRevient')}" th:text="${err}"></span>
+            </div>
+        </div>
+
+        <div>
+            <label for="dateCreation">Date de création :</label>
+            <input type="datetime-local" id="dateCreation" th:field="*{dateCreation}" required />
+            <div th:if="${#fields.hasErrors('dateCreation')}" style="color:red;">
+                <span th:each="err : ${#fields.errors('dateCreation')}" th:text="${err}"></span>
+            </div>
+        </div>
+
+        <div>
+            <label for="largeur">Largeur :</label>
+            <input type="number" step="0.01" id="largeur" th:field="*{largeur}" placeholder="Largeur" required />
+            <div th:if="${#fields.hasErrors('largeur')}" style="color:red;">
+                <span th:each="err : ${#fields.errors('largeur')}" th:text="${err}"></span>
+            </div>
+        </div>
+
+        <div>
+            <label for="longueur">Longueur :</label>
+            <input type="number" step="0.01" id="longueur" th:field="*{longueur}" placeholder="Longueur" required />
+            <div th:if="${#fields.hasErrors('longueur')}" style="color:red;">
+                <span th:each="err : ${#fields.errors('longueur')}" th:text="${err}"></span>
+            </div>
+        </div>
+
+        <div>
+            <label for="hauteur">Hauteur :</label>
+            <input type="number" step="0.01" id="hauteur" th:field="*{hauteur}" placeholder="Hauteur" required />
+            <div th:if="${#fields.hasErrors('hauteur')}" style="color:red;">
+                <span th:each="err : ${#fields.errors('hauteur')}" th:text="${err}"></span>
+            </div>
+        </div>
+
+        <button type="submit">Ajouter Bloc</button>
+    </form>
+
+    <p style="color:green;" th:text="${message}"></p>
+
+</body>
+</html>
